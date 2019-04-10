@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 09/04/2019 19:54:04 by Hibernate Tools 4.3.5.Final -->
+<hibernate-mapping>
+    <class name="pojo.Persona" table="persona" catalog="cictev8" optimistic-lock="version">
+        <id name="idpersona" type="java.lang.Integer">
+            <column name="idpersona" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="tipopersona" class="pojo.Tipopersona" fetch="select">
+            <column name="idtipopersona" not-null="true" />
+        </many-to-one>
+        <property name="cedula" type="string">
+            <column name="cedula" length="10" />
+        </property>
+        <property name="nombre" type="string">
+            <column name="nombre" length="30" />
+        </property>
+        <property name="apellido" type="string">
+            <column name="apellido" length="30" />
+        </property>
+        <property name="fechanacimiento" type="date">
+            <column name="fechanacimiento" length="10" />
+        </property>
+        <property name="ciudad" type="string">
+            <column name="ciudad" length="30" />
+        </property>
+        <property name="parroquia" type="string">
+            <column name="parroquia" length="30" />
+        </property>
+        <property name="canton" type="string">
+            <column name="canton" length="30" />
+        </property>
+        <property name="tiposangre" type="string">
+            <column name="tiposangre" length="30" />
+        </property>
+        <set name="usuarios" table="usuario" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idpersona" not-null="true" />
+            </key>
+            <one-to-many class="pojo.Usuario" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+                                         "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+ <session-factory name="cictev8ok">
+  <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+  <property name="hibernate.connection.password">root</property>
+  <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/cictev8</property>
+  <property name="hibernate.connection.username">root</property>
+  <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+  <mapping class="pojo.pojo.Datos" resource="pojo/pojo/Datos.hbm.xml"/>
+  <mapping class="pojo.pojo.Persona" resource="pojo/pojo/Persona.hbm.xml"/>
+  <mapping class="pojo.pojo.Dispositivo" resource="pojo/pojo/Dispositivo.hbm.xml"/>
+  <mapping class="pojo.pojo.Modelo" resource="pojo/pojo/Modelo.hbm.xml"/>
+  <mapping class="pojo.pojo.Operacion" resource="pojo/pojo/Operacion.hbm.xml"/>
+  <mapping class="cictev8.pojo.Rol" resource="pojo/pojo/Rol.hbm.xml"/>
+  <mapping class="pojo.pojo.Sensores" resource="pojo/pojo/Sensores.hbm.xml"/>
+  <mapping class="pojo.pojo.Tipodispositivo" resource="pojo/pojo/Tipodispositivo.hbm.xml"/>
+  <mapping class="pojo.pojo.Tipopersona" resource="pojo/pojo/Tipopersona.hbm.xml"/>
+  <mapping class="pojo.pojo.Usuario" resource="pojo/pojo/Usuario.hbm.xml"/>
+ </session-factory>
+</hibernate-configuration>

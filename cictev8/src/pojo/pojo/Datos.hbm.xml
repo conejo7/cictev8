@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 09/04/2019 19:54:04 by Hibernate Tools 4.3.5.Final -->
+<hibernate-mapping>
+    <class name="pojo.Datos" table="datos" catalog="cictev8" optimistic-lock="version">
+        <id name="iddatos" type="java.lang.Integer">
+            <column name="iddatos" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="sensores" class="pojo.Sensores" fetch="select">
+            <column name="id_sensores" not-null="true" />
+        </many-to-one>
+        <property name="nombre" type="string">
+            <column name="nombre" length="30" />
+        </property>
+        <property name="descripcion" type="string">
+            <column name="descripcion" length="30" />
+        </property>
+    </class>
+</hibernate-mapping>

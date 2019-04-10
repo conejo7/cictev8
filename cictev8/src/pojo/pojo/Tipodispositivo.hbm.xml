@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 09/04/2019 19:54:04 by Hibernate Tools 4.3.5.Final -->
+<hibernate-mapping>
+    <class name="pojo.Tipodispositivo" table="tipodispositivo" catalog="cictev8" optimistic-lock="version">
+        <id name="idtipodispositivo" type="java.lang.Integer">
+            <column name="idtipodispositivo" />
+            <generator class="identity" />
+        </id>
+        <property name="descripcion" type="string">
+            <column name="descripcion" length="30" />
+        </property>
+        <set name="dispositivos" table="dispositivo" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idtipodispositivo" not-null="true" />
+            </key>
+            <one-to-many class="pojo.Dispositivo" />
+        </set>
+    </class>
+</hibernate-mapping>

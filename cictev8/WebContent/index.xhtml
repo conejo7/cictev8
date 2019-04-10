@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head></h:head>
+<h:body>
+	<h1>Crear Modelo</h1>
+
+	<h:form id="studentSaveForm" styleClass="form-horizontal">
+		<h:panelGrid columns="2">
+			<div class="form-group">
+				<h:outputLabel value="Id:" styleClass="control-label" />
+				<div class="col-xs-10">
+					<h:inputText value="#{modelo.idmodelo}" styleClass="form-control" />
+				</div>
+			</div>
+			<div class="form-group">
+				<h:outputLabel value="Name:" styleClass="control-label" />
+				<div class="col-xs-10">
+					<h:inputText value="#{modelo.descripcion}"
+						styleClass="form-control" />
+				</div>
+			</div>
+
+			<div class="form-group">
+				<div class="col-xs-offset-2 col-xs-10">
+					<h:commandButton value="Save Record"
+						action="#{modelo.nuevoModelo()}"
+						styleClass="btn btn-primary btn-sm btnPos" />
+				</div>
+			</div>
+		</h:panelGrid>
+<h1>Lista de Sensores</h1>
+		<p:dataTable var="sensores" value="#{sensores.findAll()}">
+			<p:column headerText="ID">
+				<h:outputText value="#{sensores.idSensores}" />
+			</p:column>
+			<p:column headerText="siglas">
+				<h:outputText value="#{sensores.siglas}" />
+			</p:column>
+		</p:dataTable>
+		
+
+	
+	</h:form>
+</h:body>
+</html>

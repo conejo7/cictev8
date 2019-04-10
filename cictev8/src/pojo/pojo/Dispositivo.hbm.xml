@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 09/04/2019 19:54:04 by Hibernate Tools 4.3.5.Final -->
+<hibernate-mapping>
+    <class name="pojo.Dispositivo" table="dispositivo" catalog="cictev8" optimistic-lock="version">
+        <id name="iddispositivo" type="java.lang.Integer">
+            <column name="iddispositivo" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="modelo" class="pojo.Modelo" fetch="select">
+            <column name="idmodelo" not-null="true" />
+        </many-to-one>
+        <many-to-one name="tipodispositivo" class="pojo.Tipodispositivo" fetch="select">
+            <column name="idtipodispositivo" not-null="true" />
+        </many-to-one>
+        <many-to-one name="usuario" class="pojo.Usuario" fetch="select">
+            <column name="idusuario" not-null="true" />
+        </many-to-one>
+        <property name="nombre" type="string">
+            <column name="nombre" length="30" />
+        </property>
+        <property name="descripcion" type="string">
+            <column name="descripcion" length="30" />
+        </property>
+        <set name="sensoreses" table="sensores" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="iddispositivo" not-null="true" />
+            </key>
+            <one-to-many class="pojo.Sensores" />
+        </set>
+    </class>
+</hibernate-mapping>

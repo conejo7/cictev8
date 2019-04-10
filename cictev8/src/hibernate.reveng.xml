@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.org/dtd/hibernate-reverse-engineering-3.0.dtd" >
+
+<hibernate-reverse-engineering>
+  <table-filter match-catalog="cictev8" match-name="datos"/>
+  <table-filter match-catalog="cictev8" match-name="dispositivo"/>
+  <table-filter match-catalog="cictev8" match-name="modelo"/>
+  <table-filter match-catalog="cictev8" match-name="operacion"/>
+  <table-filter match-catalog="cictev8" match-name="persona"/>
+  <table-filter match-catalog="cictev8" match-name="rol"/>
+  <table-filter match-catalog="cictev8" match-name="sensores"/>
+  <table-filter match-catalog="cictev8" match-name="tipodispositivo"/>
+  <table-filter match-catalog="cictev8" match-name="tipopersona"/>
+  <table-filter match-catalog="cictev8" match-name="usuario"/>
+</hibernate-reverse-engineering>

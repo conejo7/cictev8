@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 09/04/2019 19:54:04 by Hibernate Tools 4.3.5.Final -->
+<hibernate-mapping>
+    <class name="pojo.Usuario" table="usuario" catalog="cictev8" optimistic-lock="version">
+        <id name="idusuario" type="java.lang.Integer">
+            <column name="idusuario" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="operacion" class="pojo.Operacion" fetch="select">
+            <column name="idoperacion" not-null="true" />
+        </many-to-one>
+        <many-to-one name="persona" class="pojo.Persona" fetch="select">
+            <column name="idpersona" not-null="true" />
+        </many-to-one>
+        <many-to-one name="rol" class="pojo.Rol" fetch="select">
+            <column name="id_rol" not-null="true" />
+        </many-to-one>
+        <property name="nombre" type="string">
+            <column name="nombre" length="30" />
+        </property>
+        <property name="username" type="string">
+            <column name="username" length="30" />
+        </property>
+        <property name="password" type="string">
+            <column name="password" length="20" />
+        </property>
+        <property name="nivel" type="java.lang.Integer">
+            <column name="nivel" />
+        </property>
+        <set name="dispositivos" table="dispositivo" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idusuario" not-null="true" />
+            </key>
+            <one-to-many class="pojo.Dispositivo" />
+        </set>
+    </class>
+</hibernate-mapping>
