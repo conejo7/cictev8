@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head></h:head>
+<body>
+	<h:form id="frmLista">
+		<h1>Lista de Dispositivos</h1>
+		<p:dataTable id="tablaListar" var="dispositivos"
+			value="#{dispositivoBean.listDispositivo}" rowKey="#{dispositivos.iddispositivo}">
+			<p:column headerText="ID">
+				<h:outputText value="#{dispositivos.iddispositivo}" />
+			</p:column>
+			<p:column headerText="Nombre">
+				<h:outputText value="#{dispositivos.nombre}" />
+			</p:column>
+			<p:column headerText="Descripcion">
+				<h:outputText value="#{dispositivos.descripcion}" />
+			</p:column>
+			
+			
+		</p:dataTable>
+	</h:form>
+</body>
+</html>

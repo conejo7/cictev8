@@ -5,8 +5,28 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
-<h:head></h:head>
+<h:head>
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<link rel="stylesheet"
+			href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</h:head>
 <h:body>
+
+	<h1>Lista de Dispositivos</h1>
+		<p:dataTable var="dispo" value="#{dispositivoBean.listDispositivo}"  >
+			<p:column headerText="ID">
+				<h:outputText value="#{dispo.iddispositivo}" />
+			</p:column>
+			<p:column headerText="Noombre">
+				<h:outputText value="#{dispo.nombre}" />
+			</p:column>
+		
+		</p:dataTable>
+
 	<h1>Crear Modelo</h1>
 
 	<h:form id="studentSaveForm" styleClass="form-horizontal">
@@ -33,18 +53,33 @@
 				</div>
 			</div>
 		</h:panelGrid>
-<h1>Lista de Sensores</h1>
-		<p:dataTable var="sensores" value="#{sensores.findAll()}">
+		<h1>Lista de Sensores</h1>
+		<p:dataTable var="sensores" value="#{sensores.findAll()}"  rowKey="#{sensores.idSensores}">
 			<p:column headerText="ID">
 				<h:outputText value="#{sensores.idSensores}" />
 			</p:column>
-			<p:column headerText="siglas">
+			<p:column headerText="Nombre">
+				<h:outputText value="#{sensores.nombre}" />
+			</p:column>
+			<p:column headerText="Siglas">
 				<h:outputText value="#{sensores.siglas}" />
 			</p:column>
+			<p:column headerText="Unidad">
+				<h:outputText value="#{sensores.unidad}" />
+			</p:column>
+			<p:column headerText="Tamaño">
+				<h:outputText value="#{sensores.tamano}" />
+			</p:column>
+			<p:column style="width:72px;text-align: center">
+				<p:commandButton action="#{controlador.visualizaSensor(sensores.idSensores)}"
+					class="btn btn-info btn-lg"  title="Ver">
+				</p:commandButton>
+			</p:column>
 		</p:dataTable>
-		
 
-	
+		<p:commandButton value="Visualizar Sensores" id="visuSen"
+			action="#{controlador.visualizaSensor(3)}" style="margin-right:20px;"
+			ajax="false" />
 	</h:form>
 </h:body>
 </html>

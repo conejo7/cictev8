@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="stylesheet"
+		href="https://maxcdn .bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+
+</h:head>
+<h:body>
+
+	<h:form>
+		<p:commandButton value="Nuevo Sensor"
+			actionListener="#{sensoresBean.prepararNuevoSensor()}"
+			oncomplete="PF('dialogNuevo').show();" update=":formNuevo">
+		</p:commandButton>
+	</h:form>
+
+	<h:form id="frmLista">
+		<h1>Lista de Sensores</h1>
+		<p:dataTable id="tablaListar" var="sensores"
+			value="#{sensoresBean.listSensores}" rowKey="#{sensores.idSensores}">
+			<p:column headerText="ID">
+				<h:outputText value="#{sensores.idSensores}" />
+			</p:column>
+			<p:column headerText="Nombre">
+				<h:outputText value="#{sensores.nombre}" />
+			</p:column>
+			<p:column headerText="Siglas">
+				<h:outputText value="#{sensores.siglas}" />
+			</p:column>
+			<p:column headerText="Unidad">
+				<h:outputText value="#{sensores.unidad}" />
+			</p:column>
+			<p:column headerText="Tamaño">
+				<h:outputText value="#{sensores.tamano}" />
+			</p:column>
+			<p:column style="width:72px;text-align: center">
+				<p:commandButton
+					action="#{controlador.visualizaSensor(sensores.idSensores)}"
+					class="btn btn-info btn-lg" title="Ver">
+				</p:commandButton>
+			</p:column>
+		</p:dataTable>
+	</h:form>
+
+	<h:form id="formNuevo">
+		<p:dialog id="dlgNuevo" widgetVar="dialogNuevo" resizable="false"
+			showEffect="explode" hideEffect="explode" modal="true">
+			<p:panelGrid columns="2" style="margin:0 auto;">
+
+				<p:outputLabel value="id" />
+				<p:selectOneMenu
+					value="#{sensoresBean.sensores.dispositivo.iddispositivo}">
+					<f:selectItem itemLabel="--Seleccione --" itemValue="" />
+					<f:selectItems value="#{sensoresBean.listDispositivos}" />
+				</p:selectOneMenu>
+
+				<p:outputLabel value="Nombre">
+					<p:inputText value="#{sensoresBean.sensores.nombre}">
+					</p:inputText>
+				</p:outputLabel>
+				<p:outputLabel value="Siglas">
+					<p:inputText value="#{sensoresBean.sensores.siglas}">
+					</p:inputText>
+				</p:outputLabel>
+				<p:outputLabel value="Unidad">
+					<p:inputText value="#{sensoresBean.sensores.unidad}">
+					</p:inputText>
+				</p:outputLabel>
+				<p:outputLabel value="Tamaño">
+					<p:inputText value="#{sensoresBean.sensores.tamano}">
+					</p:inputText>
+				</p:outputLabel>
+			</p:panelGrid>
+			<p:commandButton value="Guardar"
+				actionListener="#{sensoresBean.nuevoSensor()}"
+				update=":frmLista:tablaListar"
+				oncomplete="PF('dialogNuevo').hide();" />
+			<p:commandButton value="Cancelar" onclick="PF('dialogNuevo').hide();" />
+		</p:dialog>
+	</h:form>
+
+</h:body>
+</html>

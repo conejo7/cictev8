@@ -17,6 +17,9 @@
         <property name="unidad" type="string">
             <column name="unidad" length="30" />
         </property>
+        <property name="nombre" type="string">
+            <column name="nombre" length="50" />
+        </property>
         <property name="tamano" type="string">
             <column name="tamano" length="30" />
         </property>
